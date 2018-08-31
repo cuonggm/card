@@ -15,7 +15,7 @@ public class App extends Application {
 
 	public static final Logger LOGGER = Logger.getLogger(Application.class.getName());
 
-	public static final String APPLICATION_TITLE = "Card";
+	public static final String APPLICATION_TITLE = "Card App | CuongGM | V1";
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -23,7 +23,7 @@ public class App extends Application {
 		MainController mainController = new MainController();
 		fxmlLoader.setController(mainController);
 		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root, 400, 600);
+		Scene scene = new Scene(root, 400, 630);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle(APPLICATION_TITLE);
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -33,6 +33,7 @@ public class App extends Application {
 				System.exit(0);
 			}
 		});
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 
