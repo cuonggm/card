@@ -1,6 +1,10 @@
 package com.cuong;
 
 import java.util.logging.Logger;
+
+import com.cuong.models.Word;
+import com.cuong.service.WordService;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +27,18 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
+		LOGGER.info("Create word service");
+		WordService wordService = new WordService();
+//		LOGGER.info("Create word instance");
+//		Word w = new Word();
+//		LOGGER.info("Set kanji for word");
+//		w.setKanji("ABC");
+//		LOGGER.info("word service save new instance");
+//		wordService.saveOrUpdate(w);
+//		LOGGER.info("END");
+
+		Word word = wordService.findById(Long.valueOf(2));
+		LOGGER.info(word.toString());
 		launch(args);
 	}
 

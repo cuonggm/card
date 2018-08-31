@@ -3,7 +3,6 @@ package com.cuong.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
