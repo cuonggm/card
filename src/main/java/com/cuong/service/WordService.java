@@ -1,10 +1,11 @@
 package com.cuong.service;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import com.cuong.dao.WordDAO;
 import com.cuong.models.Word;
 
@@ -13,6 +14,16 @@ public class WordService implements BaseService<Long, Word> {
 	private static final Logger LOGGER = Logger.getLogger(WordService.class.getName());
 
 	private WordDAO wordDAO = new WordDAO();
+
+	@Override
+	public List<Word> loadAll() {
+		try {
+			return wordDAO.loadAll();
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			return Collections.emptyList();
+		}
+	}
 
 	@Override
 	public Word findById(Serializable id) {

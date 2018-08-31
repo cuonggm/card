@@ -2,12 +2,19 @@ package com.cuong.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import com.cuong.utils.HibernateUtils;
 
 public abstract class GenericDAO<PK extends Serializable, T> {
+
+	private static final Logger LOGGER = Logger.getLogger(GenericDAO.class.getName());
 
 	private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 	private Class<T> persistenceClass;
@@ -16,6 +23,18 @@ public abstract class GenericDAO<PK extends Serializable, T> {
 	public GenericDAO() {
 		this.persistenceClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
 				.getActualTypeArguments()[1];
+	}
+
+	public List<T> loadAll() {
+		LOGGER.info("Begin loadAll()");
+		LOGGER.info(getPersistenceClass().getName());
+		Session session = getSession();
+		Transaction transaction = session.beginTransaction();
+		Query<T> query = session.createQuery("from " + getPersistenceClass().getName(), getPersistenceClass());
+		List<T> resultList = query.getResultList();
+		session.flush();
+		transaction.commit();
+		return resultList;
 	}
 
 	public T findById(Serializable id) {

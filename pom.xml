@@ -28,9 +28,6 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src/main/java/com/cuong/views</directory>
-			</resource>
-			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>

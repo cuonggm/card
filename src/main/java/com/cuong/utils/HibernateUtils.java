@@ -1,5 +1,8 @@
 package com.cuong.utils;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,8 +18,12 @@ public class HibernateUtils {
 	private static SessionFactory sessionFactory;
 
 	private static SessionFactory setup() {
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+		StandardServiceRegistry registry = null;
 		try {
+			Path configFilePath = Paths.get(PathUtils.getDatabaseCfgPath().toURI());
+			File configFile = configFilePath.toFile();
+			LOGGER.info("Hibernate config file location: " + configFile.getPath());
+			registry = new StandardServiceRegistryBuilder().configure(configFile).build();
 			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 			return sessionFactory;
 		} catch (Exception e) {
