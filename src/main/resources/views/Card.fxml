@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane focusTraversable="true" onKeyPressed="#onKeyPressed" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #D6EAF8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="TOP_CENTER" focusTraversable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_RIGHT">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-padding: 8px; -fx-background-radius: 16px;" text="0/0" textFill="#5032d7">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="漢字">
+               <font>
+                  <Font size="72.0" />
+               </font>
+            </Label>
+            <Region prefHeight="26.0" />
+            <VBox fx:id="detailInfoPane" onMouseClicked="#onMouseClickedShowHideDetailInfo" spacing="10.0" style="-fx-background-color: white; -fx-padding: 20px; -fx-background-radius: 350px;">
+               <children>
+                  <Label fx:id="hiraganaLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="ひらがな" textFill="#6f6f6f">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="meaningLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="意味" textFill="#6f6f6f">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="amHanVietLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Âm hán việt" textFill="#6f6f6f">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Region prefHeight="40.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox focusTraversable="true" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backward.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/learning.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/forward.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>
