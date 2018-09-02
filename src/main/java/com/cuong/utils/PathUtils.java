@@ -1,35 +1,30 @@
 package com.cuong.utils;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public class PathUtils {
 
 	private static final Logger LOGGER = Logger.getLogger(PathUtils.class.getName());
 
-	public static URL getViewPath(String viewFileName) {
-		try {
-			Path viewPath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "views",
-					viewFileName);
-			return viewPath.toUri().toURL();
-		} catch (MalformedURLException e) {
-			LOGGER.severe(e.getMessage());
-			return null;
+	public static URL getPath(String filePath) {
+		URL path = PathUtils.class.getResource("/resources" + filePath);
+		if (path == null) {
+			path = PathUtils.class.getResource(filePath);
 		}
+		return path;
+	}
+
+	public static URL getViewPath(String viewFileName) {
+		return getPath("/views/" + viewFileName);
 	}
 
 	public static URL getDatabaseCfgPath() {
-		try {
-			Path viewPath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "config",
-					"database.cfg.xml");
-			return viewPath.toUri().toURL();
-		} catch (MalformedURLException e) {
-			LOGGER.severe(e.getMessage());
-			return null;
-		}
+		return getPath("/config/database.cfg.xml");
+	}
+
+	public static URL getImagePath(String fileName) {
+		return getPath("/images/" + fileName);
 	}
 
 	private PathUtils() {
