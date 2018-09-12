@@ -80,4 +80,23 @@ public class WordServiceImpl implements WordService {
 		}
 	}
 
+	@Override
+	public List<Word> loadRememberedWords() {
+		try {
+			return wordDAO.loadRememberedWords();
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<Word> loadLearningWords() {
+		try {
+			return wordDAO.loadLearningWords();
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			return null;
+		}
+	}
 }

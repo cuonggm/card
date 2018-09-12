@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane focusTraversable="true" onKeyPressed="#onKeyPressed" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #D6EAF8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPane" focusTraversable="true" onKeyPressed="#onKeyPressed" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #D6EAF8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="TOP_CENTER" focusTraversable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="TOP_RIGHT" spacing="10.0">
                <children>
-                  <Button fx:id="modeButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #2ECC71;" text="Watch Mode" textFill="WHITE" />
-                  <Button fx:id="randomButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #F4D03F;" text="Random" textFill="WHITE" />
-                  <Button fx:id="randomButton1" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="69.0" style="-fx-background-color: #C0392B;" text="ALL" textFill="WHITE" />
+                  <Button fx:id="modeButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionChangeMode" prefWidth="90.0" style="-fx-background-color: #D6EAF8; -fx-border-color: white;" text="Mode" textFill="WHITE" />
+                  <Button fx:id="randomButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionRandom" prefWidth="90.0" style="-fx-background-color: #D6EAF8; -fx-border-color: white;" text="Random" textFill="WHITE" />
+                  <Button fx:id="listTypeButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionChangeListType" prefWidth="90.0" style="-fx-background-color: #D6EAF8; -fx-border-color: white;" text="List Type" textFill="WHITE" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="indexLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-padding: 8px; -fx-background-radius: 16px;" text="0/0" textFill="#5032d7">
+                  <TextField fx:id="indexField" alignment="CENTER" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: white; -fx-padding: 8px; -fx-background-radius: 16px;" text="0/0">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
-                  </Label>
+                  </TextField>
                </children>
             </HBox>
             <Label fx:id="kanjiLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="漢字">
@@ -64,7 +64,7 @@
       <HBox focusTraversable="true" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button fx:id="backwardButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionPreviousWord" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
+            <Button fx:id="backwardButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionPreviousWord" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
@@ -73,7 +73,7 @@
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button fx:id="forwardButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionNextWord" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
+            <Button fx:id="forwardButton" focusTraversable="false" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionNextWord" style="-fx-background-color: white; -fx-background-radius: 50px; -fx-padding: 1px;">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>

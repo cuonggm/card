@@ -10,9 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import com.cuong.models.TimeManageable;
 import com.cuong.utils.HibernateUtils;
 
-public abstract class GenericDAO<PK extends Serializable, T> {
+public abstract class GenericDAO<PK extends Serializable, T extends TimeManageable> {
 
 	private static final Logger LOGGER = Logger.getLogger(GenericDAO.class.getName());
 
@@ -27,11 +28,11 @@ public abstract class GenericDAO<PK extends Serializable, T> {
 	}
 
 	public List<T> loadAll() {
-		LOGGER.info("Begin loadAll()");
-		LOGGER.info(getPersistenceClass().getName());
+		LOGGER.info("loadAll()");
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
-		Query<T> query = session.createQuery("from " + getPersistenceClass().getName(), getPersistenceClass());
+		Query<T> query = session.createQuery("from " + getPersistenceClass().getName() + " order by createdAt",
+				getPersistenceClass());
 		List<T> resultList = query.getResultList();
 		session.flush();
 		transaction.commit();

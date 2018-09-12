@@ -1,7 +1,8 @@
 package com.cuong;
 
 import java.util.logging.Logger;
-import com.cuong.controllers.impl.MainControllerImpl;
+
+import com.cuong.controllers.MainController;
 import com.cuong.utils.Constant;
 import com.cuong.utils.PathUtils;
 import javafx.application.Application;
@@ -19,7 +20,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(PathUtils.getViewPath("Main.fxml"));
-		MainControllerImpl mainController = new MainControllerImpl();
+		MainController mainController = new MainController();
 		fxmlLoader.setController(mainController);
 		Parent root = fxmlLoader.load();
 		Scene scene = new Scene(root, 400, 630);
