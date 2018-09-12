@@ -2,6 +2,7 @@ package com.cuong.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -51,6 +52,9 @@ public abstract class GenericDAO<PK extends Serializable, T extends TimeManageab
 	public T save(T entity) {
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
+		Date currentDate = new Date();
+		entity.setCreatedAt(currentDate);
+		entity.setUpdatedAt(currentDate);
 		session.save(entity);
 		session.flush();
 		transaction.commit();
@@ -60,6 +64,7 @@ public abstract class GenericDAO<PK extends Serializable, T extends TimeManageab
 	public T update(T entity) {
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
+		entity.setUpdatedAt(new Date());
 		session.update(entity);
 		session.flush();
 		transaction.commit();

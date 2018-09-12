@@ -1,7 +1,6 @@
 package com.cuong.service.impl;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +21,7 @@ public class WordServiceImpl implements WordService {
 			return wordDAO.loadAll();
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.getMessage(), e);
-			return Collections.emptyList();
+			return null;
 		}
 	}
 
@@ -39,9 +38,6 @@ public class WordServiceImpl implements WordService {
 	@Override
 	public Word save(Word entity) {
 		try {
-			Date currentDate = new Date();
-			entity.setCreatedAt(currentDate);
-			entity.setUpdatedAt(currentDate);
 			return wordDAO.save(entity);
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.getMessage(), e);
@@ -52,7 +48,6 @@ public class WordServiceImpl implements WordService {
 	@Override
 	public Word update(Word entity) {
 		try {
-			entity.setUpdatedAt(new Date());
 			return wordDAO.update(entity);
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.getMessage(), e);

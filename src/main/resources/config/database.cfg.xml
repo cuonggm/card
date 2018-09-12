@@ -36,6 +36,7 @@
 
 		<!-- List annotated entity class -->
 		<mapping class="com.cuong.models.Word" />
+		<mapping class="com.cuong.models.List" />
 
 	</session-factory>
 
