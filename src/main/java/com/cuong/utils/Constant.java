@@ -12,5 +12,6 @@ public class Constant {
 	public static final String TITLE_ORDER_MODE_CREATED_TIME = "Normal";
 	public static final String TITLE_ORDER_MODE_RANDOM = "Random";
 	public static final String TITLE_CHOOSER_TEXT_FILE = "Choose source file";
+	public static final String TITLE_LISTS_MANAGER = "Lists Manager";
 
 }

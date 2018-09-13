@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="62.0" text="id" />
+                <TableColumn fx:id="nameColumn" prefWidth="203.0" text="name" />
+                  <TableColumn fx:id="createdAtColumn" prefWidth="190.0" text="created at" />
+                  <TableColumn fx:id="updatedAtColumn" prefWidth="190.0" text="updated at" />
+              </columns>
+            </TableView>
+            <HBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onActionDeleteList" prefHeight="50.0" prefWidth="100.0" text="Delete">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

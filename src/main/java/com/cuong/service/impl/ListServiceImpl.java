@@ -3,9 +3,11 @@ package com.cuong.service.impl;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
-
 import com.cuong.dao.ListDAO;
+import com.cuong.dao.WordDAO;
 import com.cuong.dao.impl.ListDAOImpl;
+import com.cuong.dao.impl.WordDAOImpl;
+import com.cuong.models.Word;
 import com.cuong.service.ListService;
 
 public class ListServiceImpl implements ListService {
@@ -13,9 +15,11 @@ public class ListServiceImpl implements ListService {
 	private static final Logger LOGGER = Logger.getLogger(ListServiceImpl.class.getName());
 
 	private ListDAO listDAO;
+	private WordDAO wordDAO;
 
 	public ListServiceImpl() {
 		listDAO = new ListDAOImpl();
+		wordDAO = new WordDAOImpl();
 	}
 
 	@Override
@@ -75,6 +79,17 @@ public class ListServiceImpl implements ListService {
 		} catch (Exception e) {
 			LOGGER.severe(e.getMessage());
 			return false;
+		}
+	}
+
+	@Override
+	public void deleteListAndRelatedWords(Long id) {
+		try {
+			listDAO.deleteWords(id);
+			com.cuong.models.List list = findById(id);
+			delete(list);
+		} catch (Exception e) {
+			LOGGER.severe(e.getMessage());
 		}
 	}
 

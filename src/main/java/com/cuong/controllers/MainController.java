@@ -17,7 +17,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooserBuilder;
@@ -80,6 +82,21 @@ public class MainController extends BaseController implements Initializable {
 			for (File file : files) {
 				importer.importData(file);
 			}
+		}
+	}
+
+	@FXML
+	private void onActionManageLists(ActionEvent event) {
+		try {
+			Stage stage = new Stage();
+			FXMLLoader fxmlLoader = new FXMLLoader(PathUtils.getViewPath("ListsManager.fxml"));
+			fxmlLoader.setController(new ListsManagerController());
+			BorderPane root = fxmlLoader.load();
+			stage.setScene(new Scene(root));
+			stage.setTitle(Constant.TITLE_LISTS_MANAGER);
+			stage.show();
+		} catch (IOException e) {
+			LOGGER.severe(e.getMessage());
 		}
 	}
 
